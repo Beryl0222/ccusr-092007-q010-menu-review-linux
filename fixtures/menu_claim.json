@@ -1,8 +1,91 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "record_id": "sample-010",
   "domain": "menu_review",
   "occurred_at": "2026-09-20T09:00:00+08:00",
   "revision": 1,
-  "source": "业务样例"
+  "source": "业务样例",
+  "menu": {
+    "menu_id": "sample-010",
+    "restaurant_id": "rest-anon-07",
+    "dish": {
+      "dish_id": "dish-fried-tofu",
+      "recipe_id": "recipe-fried-tofu",
+      "recipe_version": 4,
+      "names": [
+        {"value": "香炸豆腐", "lang": "zh-Hans", "primary": true},
+        {"value": "炸豆腐", "lang": "zh-Hans", "primary": false}
+      ]
+    },
+    "ingredients": [
+      {
+        "code": "ING-TOFU",
+        "label": {"zh-Hans": "北豆腐", "en": "firm tofu"},
+        "allergens": ["soy"]
+      },
+      {
+        "code": "ING-BATTER",
+        "label": {"zh-Hans": "脆炸粉", "en": "crispy frying batter"},
+        "allergens": ["wheat"]
+      },
+      {
+        "code": "ING-SECRET-SAUCE",
+        "label": {"zh-Hans": "秘制蘸料（编号 Z-07）", "en": "house dipping sauce (ref Z-07)"},
+        "allergens": ["peanut"],
+        "confidential": true
+      }
+    ],
+    "processing_aids": [
+      {
+        "code": "PROC-OIL",
+        "label": {"zh-Hans": "食用煎炸油", "en": "cooking frying oil"},
+        "allergens": []
+      }
+    ],
+    "cross_contact": [
+      {
+        "kind": "shared_fryer",
+        "allergens": ["crustacean"],
+        "shared_with": ["dish-salt-pepper-shrimp", "dish-squid"],
+        "note": {
+          "zh-Hans": "同一口炸锅也用于虾类、鱿鱼类菜品",
+          "en": "Cooked in the same fryer as shrimp and squid dishes"
+        }
+      }
+    ],
+    "supply_batches": [
+      {
+        "batch_id": "oil-20260919-pm",
+        "ingredient_code": "PROC-OIL",
+        "served_from": "2026-09-19T17:00:00+08:00",
+        "served_until": "2026-09-20T11:30:00+08:00"
+      },
+      {
+        "batch_id": "oil-20260920-am",
+        "ingredient_code": "PROC-OIL",
+        "served_from": "2026-09-20T11:30:00+08:00",
+        "served_until": "2026-09-20T21:00:00+08:00"
+      },
+      {
+        "batch_id": "tofu-20260920",
+        "ingredient_code": "ING-TOFU",
+        "served_from": "2026-09-20T11:00:00+08:00",
+        "served_until": "2026-09-20T21:00:00+08:00"
+      }
+    ],
+    "operations": {
+      "served_from": "2026-09-20T11:00:00+08:00",
+      "served_until": "2026-09-20T21:00:00+08:00",
+      "fryer_oil_changed_at": "2026-09-20T11:30:00+08:00"
+    },
+    "confidential_recipe": {
+      "recipe_id": "recipe-fried-tofu",
+      "recipe_version": 4,
+      "proportions": {
+        "ING-SECRET-SAUCE": "Z-07 配比封存于商户档案库",
+        "ING-BATTER": "Z-07 配比封存于商户档案库"
+      },
+      "method_steps": ["Z-07 具体操作步骤封存于商户档案库，不随公开版本发布"]
+    }
+  }
 }
