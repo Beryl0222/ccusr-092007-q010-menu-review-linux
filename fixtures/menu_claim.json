@@ -4,5 +4,136 @@
   "domain": "menu_review",
   "occurred_at": "2026-09-20T09:00:00+08:00",
   "revision": 1,
-  "source": "业务样例"
+  "source": "业务样例",
+  "restaurant_id": "R001",
+  "menu_id": "menu-2026-09-20",
+  "dishes": [
+    {
+      "dish_id": "d-100",
+      "names": ["椒盐鱿鱼", "香炸鲜鱿"],
+      "recipe_id": "r-squid-pepper-salt",
+      "recipe_version": 3,
+      "ingredients": [
+        {
+          "ingredient_id": "i-squid",
+          "name": "鱿鱼",
+          "allergens": ["mollusc"]
+        },
+        {
+          "ingredient_id": "i-pepper-salt",
+          "name": "椒盐",
+          "allergens": []
+        }
+      ],
+      "processing_aids": [
+        {
+          "aid_id": "a-fryer-oil",
+          "name": "炸制用大豆油",
+          "allergens": ["soy"]
+        }
+      ],
+      "cross_contact": [
+        {
+          "equipment_id": "fryer-01",
+          "kind": "shared_fryer",
+          "shared_allergens": ["peanut", "fish"],
+          "detail": "同一口炸锅还炸制花生糖糕与小黄鱼，餐厅当天上午更换过炸油"
+        }
+      ],
+      "substitutions": []
+    },
+    {
+      "dish_id": "d-200",
+      "names": ["宫保鸡丁"],
+      "recipe_id": "r-kungpao-chicken",
+      "recipe_version": 2,
+      "ingredients": [
+        {
+          "ingredient_id": "i-chicken",
+          "name": "鸡腿肉",
+          "allergens": []
+        },
+        {
+          "ingredient_id": "i-peanut",
+          "name": "油炸花生米",
+          "allergens": ["peanut"]
+        },
+        {
+          "ingredient_id": "i-celtuce",
+          "name": "莴笋",
+          "allergens": []
+        }
+      ],
+      "processing_aids": [],
+      "cross_contact": [],
+      "substitutions": [
+        {
+          "reason": "冬季莴笋下市，改用冬笋",
+          "replaces": "i-celtuce",
+          "replacement": {
+            "ingredient_id": "i-bamboo-shoot",
+            "name": "冬笋",
+            "allergens": []
+          },
+          "valid_from": "2026-11-15T00:00:00+08:00",
+          "valid_to": "2027-02-15T00:00:00+08:00"
+        }
+      ]
+    },
+    {
+      "dish_id": "d-300",
+      "names": ["本帮走油肉"],
+      "recipe_id": "r-braised-pork",
+      "recipe_version": 1,
+      "ingredients": [
+        {
+          "ingredient_id": "i-pork-belly",
+          "name": "带皮五花肉",
+          "allergens": []
+        }
+      ],
+      "processing_aids": [
+        {
+          "aid_id": "a-fryer-oil-2",
+          "name": "炸制用大豆油",
+          "allergens": ["soy"]
+        }
+      ],
+      "cross_contact": [
+        {
+          "equipment_id": "fryer-01",
+          "kind": "shared_fryer",
+          "shared_allergens": ["peanut", "fish"],
+          "detail": "与椒盐鱿鱼共用炸锅"
+        }
+      ],
+      "substitutions": []
+    }
+  ],
+  "batches": [
+    {
+      "batch_id": "b-20260920-squid",
+      "dish_id": "d-100",
+      "served_on": "2026-09-20",
+      "ingredient_batch_ids": ["lot-squid-0920", "lot-soyoil-0920-morning"],
+      "produced_at": "2026-09-20T09:30:00+08:00"
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "f-oil-0920",
+      "kind": "oil_change",
+      "at": "2026-09-20T08:30:00+08:00",
+      "equipment_id": "fryer-01",
+      "detail": "开店前更换为新一批大豆油（批号 lot-soyoil-0920-morning），炸锅未做拆解清洗，共用交叉接触仍存在"
+    },
+    {
+      "fact_id": "f-soldout-0920",
+      "kind": "sold_out",
+      "at": "2026-09-20T11:20:00+08:00",
+      "resume_at": "2026-09-20T17:00:00+08:00",
+      "dish_id": "d-300",
+      "detail": "午市临时售罄"
+    }
+  ]
 }
